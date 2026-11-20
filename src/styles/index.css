@@ -1,0 +1,15 @@
+@import url(app.css);
+@import url(reset.css);
+
+:root {
+    --bg: linear-gradient(#302f2f, #06050f);
+    --text-color: #ffffffbb;
+    --pad-top: 150px;
+    --main-bg: #00000073;
+    --main-height: 520px;
+    --radius: 22px;
+    --base-pad: 12px;
+    --neon: #3d0353;
+    --btn-bg: #167709;
+    --btn-width: 170px;
+}
