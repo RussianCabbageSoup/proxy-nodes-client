@@ -71,8 +71,9 @@
 
 .request-info li {
     display: flex;
+    justify-content: space-around;
 }
 
-.value {
-    margin-left: 2rem;
+.request-info li * {
+    width: 100%;
 }
