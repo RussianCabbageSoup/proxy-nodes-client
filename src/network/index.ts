@@ -4,7 +4,7 @@ const API_URL = import.meta.env.VITE_API || '';
 
 type AliveProxyResponse = {
     domains: string[];
-    ping: { domain: string, ping: number };
+    ping: { domain: string, ping: number }[];
     count: number;
 }
 
