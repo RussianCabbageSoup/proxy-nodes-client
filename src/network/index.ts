@@ -3,15 +3,13 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API || '';
 
 type AliveProxyResponse = {
-    domains: string[];
-    ping: { domain: string, ping: number }[];
+    alive: { domain: string, ping: number }[];
     count: number;
 }
 
-export const fetchAliveProxy = async (targetAmount: number): Promise<AliveProxyResponse> => {
+export const fetchAliveProxy = async (): Promise<AliveProxyResponse> => {
     try {
-        const { data } = await axios.get<AliveProxyResponse>(`${API_URL}/api/proxy/alived`, {
-            params: { count: targetAmount },
+        const { data } = await axios.get<AliveProxyResponse>(`${API_URL}/api/proxy/alive`, {
             timeout: 10000
         });
         return data;

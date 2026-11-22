@@ -1,5 +1,5 @@
 .wrapper {
     min-height: 100vh;
     background: var(--bg);
-    padding: var(--base-pad);
+    color: var(--text-color);
 }
