@@ -1,11 +1,24 @@
+import AvailableProxy from './components/availableProxy/AvailableProxy';
+import Form from './components/form/Form';
+import RequestInfo from './components/requestInfo/RequestInfo';
+import BlockWrapper from './components/ui/blockWrapper/blockWrapper';
 import Container from './components/ui/container/container';
+import Main from './components/ui/main/main';
 import Wrapper from './components/ui/wrapper/wrapper';
+import { useAliveProxy } from './hooks/useAliveProxy';
 
 const App = () => {
+  const { list, count } = useAliveProxy();
   return (
     <Wrapper>
       <Container>
-        <div>Hello World</div>
+        <Main>
+          <Form />
+          <BlockWrapper>
+            <RequestInfo count={count}/>
+            <AvailableProxy list={list} />
+          </BlockWrapper>
+        </Main>
       </Container>
     </Wrapper>
   )

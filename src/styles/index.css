@@ -1,9 +1,20 @@
-@import url(app.css);
 @import url(reset.css);
 
 :root {
     --bg: #262424;
     --text-color: #fff;
-    --container-width: 1280px;
-    --container-top-padding: 160px 
+    --container-width: 880px;
+    --container-top-padding: 160px;
+    --small-radius: 5px;
+    --big-radius: 15px;
+    --input-padding: 7px 19px;
+    --input-bg: #565656;
+    --input-text-color: #ffffff33;
+    --button-bg: #076824;
+    --button-width: 140px;
+    --button-padding: 5px 16px;
+    --block-bg: #373737;
+    --block-padding: 15px;
+    --green-value: #076824;
+    --red-value: #681607;
 }

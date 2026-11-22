@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { fetchAliveProxy } from "../network";
 
-type AliveProxy = {
+export type AliveProxy = {
     domain: string;
     ping: number;
 };
 
-type AliveProxyState = {
+export type AliveProxyState = {
     list: AliveProxy[];
     count: number,
     loading: boolean;

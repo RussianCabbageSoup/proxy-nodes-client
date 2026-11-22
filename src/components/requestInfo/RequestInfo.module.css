@@ -1,0 +1,47 @@
+.info {
+    width: 100%;
+    background-color: var(--block-bg);
+    padding: var(--block-padding);
+    border-radius: var(--big-radius);
+    height: fit-content;
+}
+
+.title {
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #ffffffa9;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #1C1C1C;
+    padding: 4px 8px;
+    border-radius: var(--small-radius);
+}
+
+.key {
+    margin-right: 20px;
+}
+
+.value {
+    background: var(--green-value);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-weight: 900;
+}
+
+.error {
+    background: var(--red-value);
+}
