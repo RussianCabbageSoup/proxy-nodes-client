@@ -8,14 +8,14 @@ import Wrapper from './components/ui/wrapper/wrapper';
 import { useAliveProxy } from './hooks/useAliveProxy';
 
 const App = () => {
-  const { list, count } = useAliveProxy();
+  const { list, count, totalCount } = useAliveProxy();
   return (
     <Wrapper>
       <Container>
         <Main>
           <Form />
           <BlockWrapper>
-            <RequestInfo count={count}/>
+            <RequestInfo count={count} totalCount={totalCount}/>
             <AvailableProxy list={list} />
           </BlockWrapper>
         </Main>

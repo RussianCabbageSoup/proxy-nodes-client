@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
-import { fetchAliveProxy } from "../network";
+import { useEffect, useState } from "react";
+import type { AliveProxyResponse } from "../network";
+import { socket } from "../network/socket";
 
 export type AliveProxy = {
     domain: string;
@@ -9,6 +10,7 @@ export type AliveProxy = {
 export type AliveProxyState = {
     list: AliveProxy[];
     count: number,
+    totalCount: number;
     loading: boolean;
     error: string | null;
 }
@@ -17,35 +19,36 @@ export const useAliveProxy = () => {
     const [state, setState] = useState<AliveProxyState>({
         list: [],
         count: 0,
+        totalCount: 0,
         loading: true,
         error: null
     });
 
-    const load = useCallback(async () => {
-        setState((prev) => ({ ...prev, loading: true, error: null }));
-
-        try {
-            const response = await fetchAliveProxy();
-
+    useEffect(() => {
+        const onAlive = (data: AliveProxyResponse) => {
             setState({
-                list: response.alive,
-                count: response.count,
+                list: data.alive,
+                count: data.count,
+                totalCount: data.totalCount,
                 loading: false,
                 error: null
             });
-        } catch (err) {
-            setState({
-                list: [],
-                count: 0,
-                loading: false,
-                error: err instanceof Error ? err.message : 'Unknown error'
-            });
+        }
+
+        const onError = (err: Error) => {
+            setState((prev) => ({ ...prev, loading: false, error: err.message }));
+        }
+
+        socket.on("proxy:alive", onAlive);
+        socket.on("connect_error", onError);
+        socket.connect();
+
+        return () => {
+            socket.off("proxy:alive", onAlive);
+            socket.off("connect_error", onError);
+            socket.disconnect();
         }
     }, []);
 
-    useEffect(() => {
-        load();
-    }, [load]);
-
-    return { ...state, reload: load };
+    return state;
 }

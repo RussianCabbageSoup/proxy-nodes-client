@@ -2,16 +2,17 @@ import styles from "./RequestInfo.module.css";
 
 type Props = {
     count: number;
+    totalCount: number;
 };
 
-const RequestInfo = ({ count }: Props) => {
+const RequestInfo = ({ count, totalCount }: Props) => {
     return (
         <div className={styles.info}>
             <h3 className={styles.title}>Stats</h3>
             <ul className={styles.body}>
                 <li className={styles.row}>
                     <div className={styles.key}>Total Count</div>
-                    <div className={styles.value}>4</div>
+                    <div className={styles.value}>{totalCount}</div>
                 </li>
                 <li className={styles.row}>
                     <div className={styles.key}>Loaded Nodes</div>
